@@ -6,8 +6,8 @@ const int btns = 3;
 const int resetbtn = 12;
 int foodX;
 int foodY;
-byte posY1[150];
-byte posX1[150];
+byte posY1[256];
+byte posX1[256];
 int posX = 64;
 int posY = 40;
 int points = 1;
@@ -16,7 +16,7 @@ String dir;
 unsigned long millisCheck;
 unsigned long millisNow;
 
-int addr = 0;
+const int addr = 0;
 
 void setup() {
   //Serial.begin(9600);
@@ -37,7 +37,7 @@ void spawnFood(){
 
 void checkHighscore(){
   if(points - 1 > EEPROM.read(addr)){
-    EEPROM.update(addr, points - 1);
+    EEPROM.write(addr, points - 1);
   }
 }
 
